@@ -49,6 +49,7 @@ size_t count_words(char const *s, char c)
 	}
 	return (count);
 }
+
 char *get_word(char const *s, char c, size_t *pos)
 {
 	size_t i;
