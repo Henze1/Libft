@@ -1,2 +1,3 @@
 start:
-	gcc main.c ft_substr.c ft_strdup.c ft_memcpy.c ft_strlen.c -Wall -Wextra -Werror -o main
+	gcc main.c ft_putnbr_fd.c ft_itoa.c ft_strlen.c ft_strlcpy.c -Wall -Wextra -Werror -o start
+	./start

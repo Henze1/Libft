@@ -10,6 +10,7 @@ char    *ft_itoa(int n)
 	int sign;
 
 	dig_cnt = 0;
+	sign = 0;
 	if (n == -2147483648)
 	{
 		dig_cnt = 13;
