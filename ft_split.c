@@ -1,7 +1,7 @@
 #include "libft.h"
 
 size_t count_words(char const *s, char c);
-char *get_word(char const *s, char c, size_t pos);
+char *get_word(char const *s, char c, size_t *pos);
 
 char **ft_split(char const *s, char c)
 {
@@ -13,13 +13,19 @@ char **ft_split(char const *s, char c)
 	if (*s == '\0')
 		return (NULL);
 	i = 0;
+	j = 0;
 	word_cnt = count_words(s, c);
 	word_arr = (char**)malloc(word_cnt * sizeof(char*));
 	if (word_arr == NULL)
 		return (NULL);
-	while (s[i] == c && i < len)
-		
-	
+	while (s[j])
+	{
+		while (s[j] == c)
+			++j;
+		word_arr[i] = get_word(s, c, &j);
+		++i;
+	}
+	return (word_arr);
 }
 
 size_t count_words(char const *s, char c)
@@ -43,42 +49,25 @@ size_t count_words(char const *s, char c)
 	}
 	return (count);
 }
-char *get_word(char const *s, char c, size_t pos)
+char *get_word(char const *s, char c, size_t *pos)
 {
 	size_t i;
 	size_t len;
 	char *word;
 
-	i = 0
+	i = 0;
 	len = 0;
-	while (s[pos + len] != c)
+	while (s[*pos + len] != c && s[*pos + len])
 		++len;
 	word = (char*)malloc((len + 1) * sizeof(char));
 	if (word == NULL)
 		return (NULL);
 	while (i < len)
 	{
-		word[i] = s[pos + i];
+		word[i] = s[*pos + i];
 		++i;
 	}
+	*pos += len;
 	word[len] = '\0';
 	return (word);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
