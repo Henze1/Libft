@@ -1,5 +1,7 @@
 CC = cc
+
 Cflags = -Wall -Wextra -Werror
+
 SRC = ft_isalpha.c \
 	ft_isdigit.c \
 	ft_isalnum.c \
@@ -32,17 +34,34 @@ SRC = ft_isalpha.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c \
+	ft_putnbr_fd.c
+
+BONUS_SRC = ft_lstnew.c \
+	ft_lstadd_front.c \
+	ft_lstsize.c \
+	ft_lstlast.c \
+	ft_lstadd_back.c \
+	ft_lstdelone.c \
+	ft_lstclear.c \
+	ft_lstiter.c \
+	ft_lstmap.c
+
 OBJ = $(SRC:.c=.o)
-NAME = libft
+
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
+
+NAME = libft.a
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
+bonus: $(OBJ) $(BONUS_OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJ) $(OBJ)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 
 flean:
 	rm -f $(NAME)
