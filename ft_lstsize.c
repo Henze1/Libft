@@ -6,15 +6,15 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:56:50 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 09:56:51 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:21:35 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	int len;
+	int	len;
 
 	if (!lst)
 		return (0);

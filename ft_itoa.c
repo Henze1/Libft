@@ -6,27 +6,27 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:55:08 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 09:55:12 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:12:12 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int num_len(int n);
-void set_s(char *s, int len, int n, int sign);
+int		num_len(int n);
+void	set_s(char *s, int len, int n, int sign);
 
-char    *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	char *str;
-	int dig_cnt;
-	int sign;
+	char	*str;
+	int		dig_cnt;
+	int		sign;
 
 	dig_cnt = 0;
 	sign = 0;
 	if (n == -2147483648)
 	{
 		dig_cnt = 13;
-		str = (char*)malloc(dig_cnt * sizeof(char));
+		str = (char *)malloc(dig_cnt * sizeof(char));
 		if (!str)
 			return (NULL);
 		ft_strlcpy(str, "-2147483648", dig_cnt);
@@ -39,14 +39,14 @@ char    *ft_itoa(int n)
 		n *= -1;
 	}
 	dig_cnt += num_len(n);
-	str = (char*)malloc(dig_cnt * sizeof(char));
+	str = (char *)malloc(dig_cnt * sizeof(char));
 	set_s(str, dig_cnt, n, sign);
 	return (str);
 }
 
-int num_len(int n)
+int	num_len(int n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (n)
@@ -57,10 +57,10 @@ int num_len(int n)
 	return (len);
 }
 
-void set_s(char *s, int len, int n, int sign)
+void	set_s(char *s, int len, int n, int sign)
 {
-	int i;
-	char t;
+	int		i;
+	char	t;
 
 	i = 0;
 	while (i < len)

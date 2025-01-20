@@ -6,15 +6,15 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:55:27 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 09:55:29 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:16:46 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	if (!new)
 		return ;
@@ -23,7 +23,7 @@ void ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	tmp = *lst
+	tmp = *lst;
 	while (tmp -> next)
 		tmp = tmp -> next;
 	tmp -> next = new;

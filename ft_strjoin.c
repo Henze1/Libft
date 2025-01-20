@@ -6,21 +6,21 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:59:33 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 09:59:35 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:37:12 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t s1len;
-	size_t s2len;
-	char *new_s;
+	size_t	s1len;
+	size_t	s2len;
+	char	*new_s;
 
 	s1len = ft_strlen(s1);
 	s2len = ft_strlen(s2);
-	new_s = (char*)malloc(s1len + s2len);
+	new_s = (char *)malloc(s1len + s2len);
 	if (new_s == NULL)
 		return (NULL);
 	ft_memcpy(new_s, s1, s1len);

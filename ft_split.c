@@ -6,28 +6,28 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:58:45 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 09:58:46 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:33:14 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t count_words(char const *s, char c);
-char *get_word(char const *s, char c, size_t *pos);
+size_t	count_words(char const *s, char c);
+char	*get_word(char const *s, char c, size_t *pos);
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	size_t i;
-	size_t j;
-	size_t word_cnt;
-	char **word_arr;
+	size_t	i;
+	size_t	j;
+	size_t	word_cnt;
+	char	**word_arr;
 
 	if (*s == '\0')
 		return (NULL);
 	i = 0;
 	j = 0;
 	word_cnt = count_words(s, c);
-	word_arr = (char**)malloc(word_cnt * sizeof(char*));
+	word_arr = (char **)malloc(word_cnt * sizeof(char *));
 	if (word_arr == NULL)
 		return (NULL);
 	while (s[j])
@@ -40,14 +40,15 @@ char **ft_split(char const *s, char c)
 	return (word_arr);
 }
 
-size_t count_words(char const *s, char c)
+size_t	count_words(char const *s, char c)
 {
-	size_t i = 0;
-	size_t count = 0;
+	size_t	i;
+	size_t	count;
 
 	if (!s || *s == '\0')
-		return 0;
-
+		return (0);
+	i = 0;
+	count = 0;
 	while (s[i])
 	{
 		while (s[i] == c)
@@ -62,17 +63,17 @@ size_t count_words(char const *s, char c)
 	return (count);
 }
 
-char *get_word(char const *s, char c, size_t *pos)
+char	*get_word(char const *s, char c, size_t *pos)
 {
-	size_t i;
-	size_t len;
-	char *word;
+	size_t	i;
+	size_t	len;
+	char	*word;
 
 	i = 0;
 	len = 0;
 	while (s[*pos + len] != c && s[*pos + len])
 		++len;
-	word = (char*)malloc((len + 1) * sizeof(char));
+	word = (char *)malloc((len + 1) * sizeof(char));
 	if (word == NULL)
 		return (NULL);
 	while (i < len)

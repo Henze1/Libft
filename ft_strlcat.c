@@ -6,16 +6,16 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:59:50 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 09:59:51 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:37:49 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dest, const char *src, size_t dsize)
+size_t	ft_strlcat(char *dest, const char *src, size_t dsize)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
