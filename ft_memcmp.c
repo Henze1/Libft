@@ -6,7 +6,7 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:57:10 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 10:23:14 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/24 20:19:34 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	char	*s1p;
 	char	*s2p;
 
+	if (!s1 || !s2)
+			return (0);
 	i = 0;
 	s1p = (char *)s1;
 	s2p = (char *)s2;

@@ -6,82 +6,74 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:58:45 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 10:33:14 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/24 16:30:15 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	count_words(char const *s, char c);
-char	*get_word(char const *s, char c, size_t *pos);
+size_t	check_count(const char *s, char c)
+{
+	size_t	tokens;
+	int		flag;
+
+	tokens = 0;
+	while (*s)
+	{
+		flag = 0;
+		while (*s && *s == c)
+			++s;
+		while (*s && *s != c)
+		{
+			if (!flag)
+			{
+				++tokens;
+				flag = 1;
+			}
+			++s;
+		}
+	}
+	return (tokens);
+}
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	word_cnt;
-	char	**word_arr;
+	const char	*str;
+	char		**arr;
+	size_t		i;
+	size_t		count;
 
-	if (*s == '\0')
+	if (!s)
 		return (NULL);
-	i = 0;
-	j = 0;
-	word_cnt = count_words(s, c);
-	word_arr = (char **)malloc(word_cnt * sizeof(char *));
-	if (word_arr == NULL)
+	count = check_count(s, c);
+	arr = (char **)malloc((count + 1) * sizeof(char *));
+	if (!arr)
 		return (NULL);
-	while (s[j])
+	i = -1;
+	while (++i < count)
 	{
-		while (s[j] == c)
-			++j;
-		word_arr[i] = get_word(s, c, &j);
-		++i;
+		while (*s && *s == c)
+			++s;
+		str = s;
+		while (*s && *s != c)
+			++s;
+		arr[i] = ft_substr(str, 0, s - str);
+		if (!arr[i] && ft_split(*arr, i))
+			return (NULL);
 	}
-	return (word_arr);
+	arr[i] = NULL;
+	return (arr);
 }
+/*
+#include <stdio.h>
 
-size_t	count_words(char const *s, char c)
+int	main()
 {
-	size_t	i;
-	size_t	count;
-
-	if (!s || *s == '\0')
-		return (0);
-	i = 0;
-	count = 0;
-	while (s[i])
+	char *s = "Hello hi noric hello mihat e hi";
+	char **words = ft_split(s, ' ');
+	
+	for (int i = 0; i < 7; ++i)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] && s[i] != c)
-		{
-			count++;
-			while (s[i] && s[i] != c)
-				i++;
-		}
+		printf("%s\n", words[i]);
 	}
-	return (count);
-}
-
-char	*get_word(char const *s, char c, size_t *pos)
-{
-	size_t	i;
-	size_t	len;
-	char	*word;
-
-	i = 0;
-	len = 0;
-	while (s[*pos + len] != c && s[*pos + len])
-		++len;
-	word = (char *)malloc((len + 1) * sizeof(char));
-	if (word == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		word[i] = s[*pos + i];
-		++i;
-	}
-	*pos += len;
-	word[len] = '\0';
-	return (word);
-}
+}*/
