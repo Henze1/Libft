@@ -18,8 +18,8 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	char	*s1p;
 	char	*s2p;
 
-	if (!s1 || !s2)
-			return (0);
+	if (!s1 || !s2 || !n)
+		return (0);
 	i = 0;
 	s1p = (char *)s1;
 	s2p = (char *)s2;
@@ -30,5 +30,5 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 				- (unsigned char)s2p[i]);
 		++i;
 	}
-	return ((unsigned char)s1p[i] - (unsigned char)s2p[i]);
+	return (0);
 }

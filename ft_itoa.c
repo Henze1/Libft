@@ -12,8 +12,8 @@
 
 #include "libft.h"
 
-int		num_len(int n);
-void	set_s(char *s, int len, int n, int sign);
+static int		num_len(int n);
+static void	set_s(char *s, int len, int n, int sign);
 
 char	*ft_itoa(int n)
 {
@@ -23,13 +23,23 @@ char	*ft_itoa(int n)
 
 	dig_cnt = 0;
 	sign = 0;
+	if (n == 0)
+	{
+		str = (char *)malloc(2 * sizeof(char));
+		if (!str)
+			return (NULL);
+		str[0] = '0';
+		str[1] = '\0';
+		return (str);
+	}
 	if (n == -2147483648)
 	{
 		dig_cnt = 13;
-		str = (char *)malloc(dig_cnt * sizeof(char));
+		str = (char *)malloc((dig_cnt + 1) * sizeof(char));
 		if (!str)
 			return (NULL);
 		ft_strlcpy(str, "-2147483648", dig_cnt);
+		str[dig_cnt] = '\0';
 		return (str);
 	}
 	if (n < 0)
@@ -39,12 +49,12 @@ char	*ft_itoa(int n)
 		n *= -1;
 	}
 	dig_cnt += num_len(n);
-	str = (char *)malloc(dig_cnt * sizeof(char));
+	str = (char *)malloc((dig_cnt + 1) * sizeof(char));
 	set_s(str, dig_cnt, n, sign);
 	return (str);
 }
 
-int	num_len(int n)
+static int	num_len(int n)
 {
 	int	len;
 
@@ -57,7 +67,7 @@ int	num_len(int n)
 	return (len);
 }
 
-void	set_s(char *s, int len, int n, int sign)
+static void	set_s(char *s, int len, int n, int sign)
 {
 	int		i;
 	char	t;
@@ -79,4 +89,12 @@ void	set_s(char *s, int len, int n, int sign)
 		s[len - i - 1] = t;
 		++i;
 	}
+	s[len] = '\0';
 }
+/*
+#include <stdio.h>
+
+int main()
+{
+	printf("%s\n", ft_itoa(0));
+}*/
