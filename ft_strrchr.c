@@ -6,7 +6,7 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 10:02:12 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/22 16:33:52 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:02:16 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*ft_strrchr(const char *s, int c)
 		++i;
 	}
 	if (ch == '\0')
-		return ((char*) &s[i]);
+		return ((char *) &s[i]);
 	return (ptr);
 }

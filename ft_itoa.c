@@ -6,7 +6,7 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:55:08 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 10:12:12 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:05:37 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_itoa(int n)
 	}
 	dig_cnt += num_len(n);
 	str = (char *)malloc((dig_cnt + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
 	set_s(str, dig_cnt, n, sign);
 	return (str);
 }

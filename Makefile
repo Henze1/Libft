@@ -1,6 +1,6 @@
 CC = cc
 
-Cflags = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 AR = ar rcs
 
@@ -60,16 +60,19 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@	
+$(OBJ): $(SCR)
+	$(CC) $(CFLAGS) -c $(SRC)
 
-#bonus: $(OBJ) $(BONUS_OBJ)
-#	$(CC) $(CFLAGS) -o $(NAME) $(BONUS_OBJ) $(OBJ)
+#bonus: $(BONUS_OBJ) $(NAME)
+#	$(CC) $(CFLAGS) -c $(BONUS_OBJ)
+
+#$(BONUS_OBJ): $(BONUS_SRC)
+#	$(AR) $(NAME) $()
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)
 
-flean:
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all

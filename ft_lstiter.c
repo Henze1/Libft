@@ -6,7 +6,7 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:56:06 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/20 10:18:20 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/26 14:17:15 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 
 	if (!lst || !f)
 		return ;
+	tmp = lst;
 	while (tmp)
 	{
 		f(tmp -> content);
