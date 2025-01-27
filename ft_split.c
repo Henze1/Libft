@@ -6,35 +6,13 @@
 /*   By: hpodratc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 09:58:45 by hpodratc          #+#    #+#             */
-/*   Updated: 2025/01/24 16:30:15 by hpodratc         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:40:25 by hpodratc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	check_count(const char *s, char c)
-{
-	size_t	tokens;
-	int		flag;
-
-	tokens = 0;
-	while (*s)
-	{
-		flag = 0;
-		while (*s && *s == c)
-			++s;
-		while (*s && *s != c)
-		{
-			if (!flag)
-			{
-				++tokens;
-				flag = 1;
-			}
-			++s;
-		}
-	}
-	return (tokens);
-}
+static size_t	check_count(const char *s, char c);
 
 char	**ft_split(char const *s, char c)
 {
@@ -64,6 +42,31 @@ char	**ft_split(char const *s, char c)
 	arr[i] = NULL;
 	return (arr);
 }
+
+static size_t	check_count(const char *s, char c)
+{
+	size_t	tokens;
+	int		flag;
+
+	tokens = 0;
+	while (*s)
+	{
+		flag = 0;
+		while (*s && *s == c)
+			++s;
+		while (*s && *s != c)
+		{
+			if (!flag)
+			{
+				++tokens;
+				flag = 1;
+			}
+			++s;
+		}
+	}
+	return (tokens);
+}
+
 /*
 #include <stdio.h>
 

@@ -63,11 +63,11 @@ $(NAME): $(OBJ)
 $(OBJ): $(SCR)
 	$(CC) $(CFLAGS) -c $(SRC)
 
-#bonus: $(BONUS_OBJ) $(NAME)
-#	$(CC) $(CFLAGS) -c $(BONUS_OBJ)
+bonus: $(BONUS_OBJ) $(OBJ)
+	$(AR) $(NAME) $(OBJ) $(BONUS_OBJ)
 
-#$(BONUS_OBJ): $(BONUS_SRC)
-#	$(AR) $(NAME) $()
+$(BONUS_OBJ): $(BONUS_SRC)
+	$(CC) $(CFLAGS) -c $(BONUS_SRC)
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)
