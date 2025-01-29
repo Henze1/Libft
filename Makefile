@@ -60,14 +60,11 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
-$(OBJ): $(SCR)
-	$(CC) $(CFLAGS) -c $(SRC)
-
 bonus: $(BONUS_OBJ) $(OBJ)
 	$(AR) $(NAME) $(OBJ) $(BONUS_OBJ)
 
-$(BONUS_OBJ): $(BONUS_SRC)
-	$(CC) $(CFLAGS) -c $(BONUS_SRC)
+%.o: %.c
+    $(CC) -c $(CFLAGS) $^
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)
@@ -77,4 +74,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
