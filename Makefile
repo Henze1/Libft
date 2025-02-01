@@ -63,8 +63,8 @@ $(NAME): $(OBJ)
 bonus: $(BONUS_OBJ) $(OBJ)
 	$(AR) $(NAME) $(OBJ) $(BONUS_OBJ)
 
-%.o: %.c
-    $(CC) -c $(CFLAGS) $^
+%.o: %.c libft.h
+	$(CC) -c $(CFLAGS) $^
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)
